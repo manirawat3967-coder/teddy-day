@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Surprise</title>
+
+<style>
+  body{
+    background:#fff0f6;
+    font-family: Arial, sans-serif;
+    text-align:center;
+    padding:20px;
+    overflow-x:hidden;
+  }
+
+  /* sticker placeholder */
+  .sticker{
+    font-size:28px;
+    margin-bottom:15px;
+  }
+
+  h2{
+    color:#5a0d5a;
+  }
+
+  .lyrics{
+    font-size:18px;
+    line-height:1.7;
+    margin-top:20px;
+    min-height:150px;
+  }
+
+  .teddy img{
+    width:160px;
+    margin-top:15px;
+    animation: dance 1s infinite alternate;
+  }
+
+  @keyframes dance{
+    from{transform:rotate(-4deg) translateY(0);}
+    to{transform:rotate(4deg) translateY(-8px);}
+  }
+
+  .buttons{
+    margin-top:30px;
+    display:none;
+  }
+
+  .yes{
+    background:purple;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin-right:10px;
+  }
+
+  .no{
+    background:white;
+    color:black;
+    padding:12px 25px;
+    border:2px solid purple;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+  }
+
+  .glitch{
+    margin-top:20px;
+    color:red;
+    font-weight:bold;
+    display:none;
+    animation: glitch 0.15s infinite;
+  }
+
+  @keyframes glitch{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-2px);}
+    50%{transform:translateX(2px);}
+    75%{transform:translateX(-2px);}
+    100%{transform:translateX(0);}
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Sticker (tum yahan image dogi) -->
+
+
+<div class="sticker">
+  <img src="sticker.png" alt="sticker" width="180">
+</div>
+
+<h2>Bore ho gaya kya? 😏</h2>
+<p>Abhi to shuruwat hai…  
+continue karna hai to ek song gaa ke dikhao 🎶</p>
+
+<div class="lyrics" id="lyrics"></div>
+
+
+
+
+<div class="buttons" id="buttons">
+  <p><b>Wanna continue? 💜</b></p>
+  <button class="yes" onclick="goNext()">Yes</button>
+  <button class="no" onclick="noChoice()">No</button>
+</div>
+
+<div class="glitch" id="glitchText">
+  Galat choice 😡😤  
+  YES select karo!!!
+</div>
+
+<script>
+  const songLines = [
+    "🎵 Tum se hi din hota hai,",
+    "🎵 tum se hi raat hoti hai,",
+    "🎵 zindagi ke har pal me,",
+    "🎵 tumhari hi baat hoti hai,",
+    "🎵 Teddy mile ya na mile…",
+    "🎵 par drama full hona chahiye 😌"
+  ];
+
+  let i = 0;
+  const lyricsDiv = document.getElementById("lyrics");
+
+  function showLyrics(){
+    if(i < songLines.length){
+      lyricsDiv.innerHTML += songLines[i] + "<br>";
+      i++;
+      setTimeout(showLyrics, 1200); // speed control
+    }else{
+      document.getElementById("buttons").style.display = "block";
+    }
+  }
+
+  showLyrics();
+
+  function noChoice(){
+    document.getElementById("glitchText").style.display = "block";
+  }
+
+  function goNext(){
+    window.location.href = "teddy.html";
+  }
+</script>
+
+</body>
+</html>
+
